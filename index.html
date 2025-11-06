@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversor de Moedas</title>
+  <link rel="stylesheet" href="estilo.css">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <meta name="description" content="Converta valores entre diferentes moedas em tempo real com o Conversor de Moedas SimonOS.">
+</head>
+
+<body>
+  <div class="container">
+    <!-- Cabeçalho -->
+    <header class="header">
+      <h1><i class="fas fa-money-bill-wave"></i> Conversor de Moedas</h1>
+      <p>Converta valores entre diferentes moedas em tempo real</p>
+    </header>
+
+    <!-- Corpo principal -->
+    <main class="converter-container">
+      <section class="converter-card" aria-labelledby="converter-title">
+        <h2 id="converter-title" class="visually-hidden">Área de Conversão</h2>
+
+        <div class="input-group">
+          <!-- Valor de entrada -->
+          <div class="amount-section">
+            <label for="amount">Valor:</label>
+            <div class="input-with-icon">
+              <span class="currency-symbol" id="fromSymbol"></span>
+              <input 
+                type="number" 
+                id="amount" 
+                placeholder="0,00" 
+                min="0" 
+                step="0.01" 
+                value="1.00" 
+                aria-label="Valor a converter">
+            </div>
+          </div>
+
+          <!-- Botão de troca -->
+          <div class="swap-button">
+            <button id="swapCurrencies" title="Trocar moedas" aria-label="Trocar moedas de conversão">
+              <i class="fas fa-exchange-alt"></i>
+            </button>
+          </div>
+
+          <!-- Resultado -->
+          <div class="result-section">
+            <label for="result">Resultado:</label>
+            <div class="input-with-icon">
+              <span class="currency-symbol" id="toSymbol"></span>
+              <input type="text" id="result" readonly value="0.00" aria-label="Resultado da conversão">
+            </div>
+          </div>
+        </div>
+
+        <!-- Seletor de moedas -->
+        <div class="currency-selectors">
+          <div class="currency-selector">
+            <label for="fromCurrency">De:</label>
+            <select id="fromCurrency" aria-label="Moeda de origem">
+              <option value="BRL" selected>Real Brasileiro (BRL)</option>
+              <option value="USD">Dólar Americano (USD)</option>
+              <option value="EUR">Euro (EUR)</option>
+              <option value="GBP">Libra Esterlina (GBP)</option>
+              <option value="JPY">Iene Japonês (JPY)</option>
+              <option value="CAD">Dólar Canadense (CAD)</option>
+              <option value="AUD">Dólar Australiano (AUD)</option>
+              <option value="CHF">Franco Suíço (CHF)</option>
+              <option value="CNY">Yuan Chinês (CNY)</option>
+              <option value="ARS">Peso Argentino (ARS)</option>
+            </select>
+          </div>
+
+          <div class="currency-selector">
+            <label for="toCurrency">Para:</label>
+            <select id="toCurrency" aria-label="Moeda de destino">
+              <option value="BRL">Real Brasileiro (BRL)</option>
+              <option value="USD" selected>Dólar Americano (USD)</option>
+              <option value="EUR">Euro (EUR)</option>
+              <option value="GBP">Libra Esterlina (GBP)</option>
+              <option value="JPY">Iene Japonês (JPY)</option>
+              <option value="CAD">Dólar Canadense (CAD)</option>
+              <option value="AUD">Dólar Australiano (AUD)</option>
+              <option value="CHF">Franco Suíço (CHF)</option>
+              <option value="CNY">Yuan Chinês (CNY)</option>
+              <option value="ARS">Peso Argentino (ARS)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Taxa de câmbio -->
+        <div class="conversion-info">
+          <div class="rate-info">
+            <span id="rateText">Taxa de câmbio: 1 USD = 0.00 BRL</span>
+            <span class="last-update" id="lastUpdate"></span>
+          </div>
+        </div>
+
+        <!-- Botão de conversão -->
+        <button id="convertBtn" class="convert-button">
+          <i class="fas fa-sync-alt"></i> Converter
+        </button>
+      </section>
+
+      <!-- Tabela de taxas -->
+      <section class="rates-card">
+        <h3><i class="fas fa-chart-line"></i> Taxas de Câmbio Atuais</h3>
+        <div class="rates-grid" id="ratesGrid">
+          <!-- As taxas serão carregadas via JavaScript -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Histórico -->
+    <aside class="history-card">
+      <h3><i class="fas fa-history"></i> Histórico de Conversões</h3>
+      <div class="history-list" id="historyList">
+        <!-- Histórico será carregado via JavaScript -->
+      </div>
+      <button id="clearHistory" class="clear-button">
+        <i class="fas fa-trash"></i> Limpar Histórico
+      </button>
+    </aside>
+
+    <footer class="footer">
+    <div class="footer-content">
+        <p>© 2025 <strong>Caio Melo</strong> TheDevCaioM</p>
+        <div class="social-icons">
+        <a href="https://github.com/TheDevCaioM" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/caio-melo-930433362/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:caiomelomorais.c.js@gmail.com" target="_blank"><i class="far fa-envelope"></i></a>
+        </div>
+    </div>
+    </footer>
+  </div>
+
+  <!-- Tela de carregamento -->
+  <div id="loadingOverlay" class="loading-overlay" aria-hidden="true">
+    <div class="loading-spinner">
+      <i class="fas fa-sync fa-spin"></i>
+      <p>Carregando taxas de câmbio...</p>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

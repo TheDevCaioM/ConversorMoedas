@@ -38,8 +38,12 @@ Abra o arquivo index.html no navegador.
 Escolha as moedas desejadas, insira o valor e clique em Converter  
 Consulte o resultado e o histórico diretamente na interface.  
 
-## 💬 Contato
+### 💬 Contato
 
 📧 **E-mail:** [caiomelomorais.c.js@gmail.com](mailto:caiomelomorais.c.js@gmail.com)  
 💼 **LinkedIn:** [linkedin.com/in/caio-melo-930433362](https://www.linkedin.com/in/caio-melo-930433362/)  
 🌐 **GitHub:** [github.com/TheDevCaioM](https://github.com/TheDevCaioM)
+
+<div align="center">
+⭐️ Não esqueça de dar uma estrela se este projeto te ajudou! ⭐️
+</div>
